@@ -32,8 +32,16 @@ class GameStatistics
         perecentage.round(1)
     end
 
-    def highest_total_score
+    def total_score
+        @games_data.map do |game|
+            home_goals = game.home_goals
+            away_goals = gane.away_goals
+            home_goals + away_goals
+        end
+    end
 
+    def highest_total_score
+        totalscore.max
     end
 
     def lowest_total_score
