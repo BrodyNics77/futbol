@@ -118,5 +118,6 @@ class SeasonStatistics
       team = @teams.find { |team| team.team_id == team_id }
       team.teamName
     end
-  end
+ 
+end
   
