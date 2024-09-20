@@ -48,15 +48,3 @@ RSpec.describe SeasonStatistics do
     end
   end
 end
-#   describe '#load_game_data' do
-#     xit 'loads game data from a CSV file' do
-#       # Loading data successfully should probably be tested in StatTracker?
-#     end
-#   end
-
-#   describe '#load_team_data' do
-#     xit 'loads team data from a CSV file' do
-#       # Loading data successfully should probably be tested in StatTracker?
-#   end
-# end
-# end
