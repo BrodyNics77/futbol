@@ -12,24 +12,23 @@ RSpec.describe SeasonStatistics do
       teams: team_path,
       game_teams: game_teams_path
     }
-    @season_stats = SeasonStatistics.new(locations[:games], locations[:game_teams])
+    @stat_tracker = StatTracker.from_csv(locations)
+    @season_stats = SeasonStatistics.new(@stat_tracker.games, @stat_tracker.teams, @stat_tracker.game_teams, @stat_tracker)
   end
 
   describe '#coach stats' do
     it 'knows the winningest coach' do
-     
       expect(@season_stats.winningest_coach).to eq('Claude Julien')
     end
 
     it 'knows the worst coach' do
-      #allow(@season_stats).to receive(:worst_coach).and_return('John Tortorella')
       expect(@season_stats.worst_coach).to eq('John Tortorella')
     end
   end
 
   describe '#accuracy stats' do
     it 'knows the most accurate team' do
-      expect(@season_stats.most_accurate_team).to eq('FC Dallas')
+      expect(@season_stats.most_accurate_team).to eq("New York City FC")
     end
 
     it 'knows the least accurate team' do
@@ -43,18 +42,7 @@ RSpec.describe SeasonStatistics do
     end
 
     it 'knows the team with the fewest tackles' do
-      expect(@season_stats.fewest_tackles).to eq('FC Dallas')
+      expect(@season_stats.fewest_tackles).to eq("Portland Timbers")
     end
-  end
-
-  describe '#load_game_data' do
-    xit 'loads game data from a CSV file' do
-      # Loading data successfully should probably be tested in StatTracker?
-    end
-  end
-
-  describe '#load_team_data' do
-    xit 'loads team data from a CSV file' do
-      # Loading data successfully should probably be tested in StatTracker?
   end
 end

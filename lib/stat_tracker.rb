@@ -36,7 +36,6 @@ class StatTracker
     end
 
     def team_name(team_id)
-        team = @teams.find { |team| team.team_id == team_id}
-        team.teamName if team
-      end
+        @teams.find { |team| team.team_id == team_id}.team_name
+    end
 end

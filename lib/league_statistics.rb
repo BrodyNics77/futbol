@@ -17,7 +17,7 @@ class LeagueStatistics
   end
 
   def count_of_teams
-    @teams.size
+    @game_teams.map(&:team_id).uniq.count
   end
 
   def best_offense
@@ -71,9 +71,41 @@ class LeagueStatistics
     end
   end
 
-  def team_name(team_id)
-    team = @teams.find { |team| team.team_id == team_id}
-    team.team_name
+  def home_games 
+    @game_teams.find_all { |game_team| game_team.HoA == 'home'} #select is finding all the teams (game_teams) that HoA is home. So it goes through the array and any row where HoA = home is returned
+  end
+      
+  def team_home_games(team_id)   
+    home_games.find_all { |game_team| game_team.team_id == team_id } #uses home_games to find all a specific teams home games
+  end
+
+  def total_home_games(team_id)
+    team_home_games(team_id).count #returning the count of a specific teams home games
+  end
+
+  def total_home_score(team_id)
+    team_home_games(team_id).sum { |game_team| game_team.goals.to_f } #calls the team_home_games method (which tells you how many home games teams_id has) it sums up all the games.goals and converts them to a float
+  end
+
+  def highest_scoring_home_team_id
+    home_games.max_by do |game_team| 
+      id = game_team.team_id
+      total_home_score(id) / total_home_games(id)
+    end.team_id
+  end
+
+  def highest_scoring_home_team
+    @stat_tracker.team_name(highest_scoring_home_team_id)
+  end
+  
+  def lowest_scoring_home_team_id
+     home_games.min_by do |game_team| 
+      id = game_team.team_id
+      total_home_score(id) / total_home_games(id)
+    end.team_id
+  end
+
+  def lowest_scoring_home_team
+    @stat_tracker.team_name(lowest_scoring_home_team_id)
   end
 end
- 
