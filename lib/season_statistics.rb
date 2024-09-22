@@ -79,29 +79,38 @@ class SeasonStatistics
       win_percentage = win_percentage(wins[coach], games)
       { coach: coach, win_percentage: win_percentage}
     end
-  end  
+  end
 
-  def fewest_tackles
+  def fewest_tackles(season)
     tackles_teams = Hash.new(0)
-    @game_teams.each do |game_team|
-      team_id = game_team.team_id
-      tackles_teams[team_id] += game_team.tackles.to_i
+    @games.each do |game|
+      if game.season == season
+        @game_teams.each do |game_team|
+          if game.game_id == game_team.game_id
+            team_id = game_team.team_id
+            tackles_teams[team_id] += game_team.tackles.to_i
+          end
+        end
+      end
     end
-  
+    binding.pry
     team_fewest_tackles = tackles_teams.min_by { |team, tackles| tackles }[0]
-  
     team_name(team_fewest_tackles)
   end
   
-  def most_tackles
+  def most_tackles(season)
     tackles_teams = Hash.new(0)
-    @game_teams.each do |game_team|
-      team_id = game_team.team_id
-      tackles_teams[team_id] += game_team.tackles.to_i
+    @games.each do |game|
+      if game.season == season
+        @game_teams.each do |game_team|
+          if game.game_id == game_team.game_id
+            team_id = game_team.team_id
+            tackles_teams[team_id] += game_team.tackles.to_i
+          end
+        end
+      end
     end
-  
     team_most_tackles = tackles_teams.max_by { |team, tackles| tackles }[0]
-  
     team_name(team_most_tackles)
   end
   

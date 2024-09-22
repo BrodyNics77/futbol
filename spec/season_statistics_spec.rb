@@ -38,11 +38,11 @@ RSpec.describe SeasonStatistics do
 
   describe '#tackle stats' do
     it 'knows the team with the most tackles' do
-      expect(@season_stats.most_tackles).to eq('Houston Dynamo')
+      expect(@season_stats.most_tackles("20122013")).to eq('Houston Dynamo')
     end
 
     it 'knows the team with the fewest tackles' do
-      expect(@season_stats.fewest_tackles).to eq("Portland Timbers")
+      expect(@season_stats.fewest_tackles("20122013")).to eq('Portland Timbers')
     end
   end
 end
