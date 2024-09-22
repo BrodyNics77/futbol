@@ -41,7 +41,7 @@ RSpec.describe GameStatistics do
     end
 
     describe '#knows the number of games in a season' do
-        t 'counts the games in a season' do
+        it 'counts the games in a season' do
             expected = {"20122013"=>57, "20162017"=>4, "20142015"=>16, "20152016"=>16, "20132014"=>6}
         expect(@game_stats.count_of_games_by_season).to eq(expected)
         end

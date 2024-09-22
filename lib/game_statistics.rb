@@ -7,7 +7,6 @@ class GameStatistics
                 :stat_tracker
 
     def initialize(game_data, team_data, stat_tracker)
-       g
         @team_data = team_data
         @stat_tracker = stat_tracker
     end
