@@ -18,12 +18,10 @@ RSpec.describe SeasonStatistics do
 
   describe '#coach stats' do
     it 'knows the winningest coach' do
-     
       expect(@season_stats.winningest_coach).to eq('Claude Julien')
     end
 
     it 'knows the worst coach' do
-     
       expect(@season_stats.worst_coach).to eq('John Tortorella')
     end
   end
