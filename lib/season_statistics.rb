@@ -93,7 +93,6 @@ class SeasonStatistics
         end
       end
     end
-    binding.pry
     team_fewest_tackles = tackles_teams.min_by { |team, tackles| tackles }[0]
     team_name(team_fewest_tackles)
   end
