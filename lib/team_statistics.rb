@@ -13,11 +13,10 @@ class TeamStatistics
       @stat_tracker = stat_tracker
       @team_info_hash = {}
   end
-
+  
   def team_name(team_id)
-      @teams[team_id]&.team_name
+    @teams.find { |team| team.team_id == team_id }.team_name
   end
-
 
   def count_of_teams
       @teams.size
@@ -86,17 +85,13 @@ class TeamStatistics
       lowest_win_percentage = head_to_head_results.values.min_by { |record| record[:win_percentage] }
       rival = head_to_head_results.key(lowest_win_percentage)
       rival
-  end
-
-  def team_name(team_id)
-      @teams.find { |team| team.team_id == team_id }.team_name
-  end       
+  end  
 
   def favorite_opponent(team_id)
-     head_to_head_results = head_to_head(team_id)
-     highest_win_percentage = head_to_head_results.values.max_by { |record| record[:highest_win_percentage]}
-     favorite = head_to_head_results.key(highest_win_percentage)
-     favorite
+     head_to_head_results = head_to_head(team_id)    
+     highest_win_percentage = head_to_head_results.values.max_by { |record| record[:win_percentage]}
+     favorite =  head_to_head_results.key(highest_win_percentage)
+     favorite     
   end 
 
   def worst_loss(team_id)

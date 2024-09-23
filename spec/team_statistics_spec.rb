@@ -73,7 +73,7 @@ RSpec.describe TeamStatistics do
 
    describe 'team information' do
      it 'has team info' do
-     expect(@team_statistics.team_info(3)).to be_a(Hash)
+     expect(@team_statistics.team_info('3')).to be_a(Hash)
      end
 
      it 'has team info' do
