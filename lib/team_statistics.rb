@@ -238,6 +238,8 @@ class TeamStatistics
     end
   
     win_percentage = total_games > 0 ? (wins.to_f / total_games).round(2) : 0.0
+    team_name = @stat_tracker.team_name(team_id)
     win_percentage
+    {team_name: team_name, win_percentage: win_percentage}
   end  
 end

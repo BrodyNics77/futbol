@@ -14,7 +14,7 @@
       <img src="./assets/0.12.3/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2024-09-22T22:48:23-05:00">2024-09-22T22:48:23-05:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2024-09-22T22:52:38-05:00">2024-09-22T22:52:38-05:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -23,14 +23,14 @@
     <span class="group_name">All Files</span>
     (<span class="covered_percent">
       <span class="green">
-  90.74%
+  90.76%
 </span>
 
      </span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         306.57
+         305.95
        </span>
     </span> hits/line
     )
@@ -43,11 +43,11 @@
   </div>
 
   <div class="t-line-summary">
-    <b>540</b> relevant lines,
-    <span class="green"><b>490</b> lines covered</span> and
+    <b>541</b> relevant lines,
+    <span class="green"><b>491</b> lines covered</span> and
     <span class="red"><b>50</b> lines missed. </span>
     (<span class="green">
-  90.74%
+  90.76%
 </span>
 )
   </div>
@@ -83,12 +83,12 @@
         
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#743fb3e807cd77edc19e6d92118373aee945c2af" class="src_link" title="lib/game_statistics.rb">lib/game_statistics.rb</a></td>
-            <td class="green strong cell--number t-file__coverage">90.32 %</td>
-            <td class="cell--number">105</td>
-            <td class="cell--number">62</td>
-            <td class="cell--number">56</td>
+            <td class="green strong cell--number t-file__coverage">90.48 %</td>
+            <td class="cell--number">111</td>
+            <td class="cell--number">63</td>
+            <td class="cell--number">57</td>
             <td class="cell--number">6</td>
-            <td class="cell--number">15.58</td>
+            <td class="cell--number">15.41</td>
             
           </tr>
         
@@ -132,7 +132,7 @@
             <td class="cell--number">43</td>
             <td class="cell--number">31</td>
             <td class="cell--number">12</td>
-            <td class="cell--number">217.74</td>
+            <td class="cell--number">216.98</td>
             
           </tr>
         
@@ -519,7 +519,7 @@
     <h3>lib/game_statistics.rb</h3>
     <h4>
       <span class="green">
-  90.32%
+  90.48%
 </span>
 
       lines covered
@@ -528,8 +528,8 @@
     
 
     <div class="t-line-summary">
-      <b>62</b> relevant lines.
-      <span class="green"><b>56</b> lines covered</span> and
+      <b>63</b> relevant lines.
+      <span class="green"><b>57</b> lines covered</span> and
       <span class="red"><b>6</b> lines missed.</span>
     </div>
 
@@ -1619,7 +1619,29 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="99">
+          <li class="never" data-hits="" data-linenumber="99">
+            
+            
+
+            
+
+            <code class="ruby">      </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="100">
+            
+            
+
+            
+
+            <code class="ruby">        # Count games by season</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="101">
             <span class="hits">1</span>
             
 
@@ -1630,18 +1652,18 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="99" data-linenumber="100">
+          <li class="covered" data-hits="99" data-linenumber="102">
             <span class="hits">99</span>
             
 
             
 
-            <code class="ruby">            count_by_season[game.season] += 1</code>
+            <code class="ruby">          count_by_season[game.season] += 1</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="101">
+          <li class="never" data-hits="" data-linenumber="103">
             
             
 
@@ -1652,40 +1674,84 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="102">
-            
-            
-
-            
-
-            <code class="ruby">        count_by_season</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="103">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">        @stat_tracker.team_name(team_data)</code>
-          </li>
-        </div>
-      
-        <div>
           <li class="never" data-hits="" data-linenumber="104">
             
             
 
             
 
-            <code class="ruby">    end</code>
+            <code class="ruby">      </code>
           </li>
         </div>
       
         <div>
           <li class="never" data-hits="" data-linenumber="105">
+            
+            
+
+            
+
+            <code class="ruby">        # Convert the hash to an array of hashes</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="106">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">        count_by_season.map do |season, games|</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="5" data-linenumber="107">
+            <span class="hits">5</span>
+            
+
+            
+
+            <code class="ruby">          { season: season.to_i, games: games }</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="108">
+            
+            
+
+            
+
+            <code class="ruby">        end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="109">
+            
+            
+
+            
+
+            <code class="ruby">      end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="110">
+            
+            
+
+            
+
+            <code class="ruby">      </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="111">
             
             
 
@@ -5032,8 +5098,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="183" data-linenumber="39">
-            <span class="hits">183</span>
+          <li class="covered" data-hits="150" data-linenumber="39">
+            <span class="hits">150</span>
             
 
             
