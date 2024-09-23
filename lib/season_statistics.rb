@@ -28,6 +28,7 @@ class SeasonStatistics
     end
   
     team_name(most_accurate_team_id)
+    @stat_tracker.team_name(team_id)
   end
   
   def accuracy(goals, shots)
@@ -49,16 +50,20 @@ class SeasonStatistics
     end
   
     team_name(least_accurate_team_id)
+    @stat_tracker.team_name(team_id)
   end
   
   def winningest_coach(season)    
     coach_rating = coach_win_percentages(season)    
     coach_rating.max_by { |stats| stats[:win_percentage] }[:coach]
+    @stat_tracker.team_name(team_id)
   end
+  
   
   def worst_coach(season)    
     coach_rating = coach_win_percentages(season)      
     coach_rating.min_by { |stats| stats[:win_percentage] }[:coach]
+    @stat_tracker.team_name(team_id)
   end
 
   def coach_win_percentages(season)    
@@ -95,6 +100,7 @@ class SeasonStatistics
     end
     team_fewest_tackles = tackles_teams.min_by { |team, tackles| tackles }[0]
     team_name(team_fewest_tackles)
+    @stat_tracker.team_name(team_id)
   end
   
   def most_tackles(season)
@@ -111,6 +117,7 @@ class SeasonStatistics
     end
     team_most_tackles = tackles_teams.max_by { |team, tackles| tackles }[0]
     team_name(team_most_tackles)
+    @stat_tracker.team_name(team_id)
   end
   
   def win_percentage(wins, total)

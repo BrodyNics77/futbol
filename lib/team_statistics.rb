@@ -34,6 +34,7 @@ class TeamStatistics
           end
       end
       goals
+      @stat_tracker.team_name(team_id)
   end
 
   def fewest_goals_scored(team_id)
@@ -48,6 +49,7 @@ class TeamStatistics
           end
       end
       goals
+      @stat_tracker.team_name(team_id)
   end
 
   def head_to_head(team_id)
@@ -78,6 +80,7 @@ class TeamStatistics
 
       results.transform_keys! { |id| team_name(id) }
       results
+      @stat_tracker.team_name(team_id)
   end
 
   def rival(team_id)
@@ -85,6 +88,7 @@ class TeamStatistics
       lowest_win_percentage = head_to_head_results.values.min_by { |record| record[:win_percentage] }
       rival = head_to_head_results.key(lowest_win_percentage)
       rival
+      @stat_tracker.team_name(team_id)
   end  
 
   def favorite_opponent(team_id)
@@ -92,6 +96,7 @@ class TeamStatistics
      highest_win_percentage = head_to_head_results.values.max_by { |record| record[:win_percentage]}
      favorite =  head_to_head_results.key(highest_win_percentage)
      favorite     
+     @stat_tracker.team_name(team_id)
   end 
 
   def worst_loss(team_id)
@@ -111,6 +116,7 @@ class TeamStatistics
       end
     end
       max_loss
+      
   end
    
   def biggest_team_blowout(team_id)
@@ -127,6 +133,7 @@ class TeamStatistics
       end
     end
       max_blowout
+      @stat_tracker.team_name(team_id)
   end
   
   def team_info(team_id)
@@ -140,6 +147,7 @@ class TeamStatistics
           end
       end
       @team_info_hash
+      @stat_tracker.team_name(team_id)
   end                             
 
   def seasons_wins(team_id)
@@ -189,6 +197,7 @@ class TeamStatistics
       stats[:wins].to_f / stats[:games_played]
     end
     worst_season[0]
+    @stat_tracker.team_name(team_id)
   end
 
   def best_season(team_id)
@@ -206,6 +215,7 @@ class TeamStatistics
       stats[:wins].to_f / stats[:games_played]
     end
     best_season[0]
+    @stat_tracker.team_name(team_id)
   end
   
   def team_info(team_id)
