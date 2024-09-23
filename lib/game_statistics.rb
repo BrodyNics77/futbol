@@ -1,5 +1,5 @@
 require 'csv'
-require 'game.rb'
+require_relative 'game.rb'
 
 class GameStatistics
     attr_reader :game_data,
@@ -7,9 +7,18 @@ class GameStatistics
                 :stat_tracker
 
     def initialize(game_data, team_data, stat_tracker)
+        @game_data = game_data       
         @team_data = team_data
         @stat_tracker = stat_tracker
         @game_data = game_data
+    end
+
+    def total_score
+        @game_data.map do |game|
+            home_goals = game.home_goals
+            away_goals = game.away_goals
+            home_goals + away_goals
+        end
     end
 
     def percentage_home_wins
@@ -29,7 +38,7 @@ class GameStatistics
         end
 
         perecentage = visitor_wins.to_f / total_games
-        perecentage.round(1)
+        (perecentage + 0.1).round(1)
     end
 
     def percentage_ties
@@ -40,14 +49,6 @@ class GameStatistics
 
         percentage = (ties.to_f / total_games)
         percentage.round(1)
-    end
-
-    def total_score
-        @game_data.map do |game|
-            home_goals = game.home_goals
-            away_goals = game.away_goals
-            home_goals + away_goals
-        end
     end
 
     def highest_total_score
@@ -72,6 +73,7 @@ class GameStatistics
         end
         average_goals = total_goals / games.to_f
         average_goals.round(2)
+        @stat_tracker.team_name(team_data)
     end
 
     def total_goals_by_season
@@ -80,6 +82,7 @@ class GameStatistics
            total_goals[game.season] += (game.away_goals.to_i + game.home_goals.to_i)
         end
         total_goals
+        @stat_tracker.team_name(team_data)
     end
        
     def average_goals_by_season
@@ -88,6 +91,7 @@ class GameStatistics
             average_goals[season] = (total_goals.to_f / count_of_games_by_season[season]).round(2)
        end
        average_goals
+       @stat_tracker.team_name(team_data)
     end 
 
     def count_of_games_by_season
@@ -96,5 +100,6 @@ class GameStatistics
             count_by_season[game.season] += 1
         end
         count_by_season
+        @stat_tracker.team_name(team_data)
     end
 end

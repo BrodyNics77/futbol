@@ -38,4 +38,61 @@ class StatTracker
     def team_name(team_id)
         @teams.find { |team| team.team_id == team_id}.team_name
     end
+
+    #puts'--------------------Game Statistics--------------------'
+
+    def average_goals_per_game
+        @stat_tracker.team_name(average_goals_per_game_id)
+    end
+
+    def average_goals_by_season
+        @stat_tracker.name(average_goals_by_season_id)
+    end
+    
+
+
+    #puts'--------------------League Statistics--------------------'
+
+    def count_of_teams
+        @stat_tracker.name(count_of_teams_id)
+      end
+    
+    def best_offense
+        @stat_tracker.name(best_offense_id)
+    end
+
+    def worst_offense
+        @stat_tracker.team_name(worst_offense_id)
+    end
+
+    def highest_scoring_visitor
+        @stat_tracker.team_name(highest_scoring_visitor_id)
+    end
+
+    def highest_scoring_home_team
+        @stat_tracker.team_name(highest_scoring_home_team_id)
+    end
+
+    def lowest_scoring_visitors
+        @stat_tracker.team_name(lowest_scoring_visitor_id)
+    end
+
+    def lowest_scoring_home_team
+        @stat_tracker.team_name(lowest_scoring_home_team_id)
+    end
+
+
+
+#puts'--------------------Season Statistics--------------------'
+
+
+    
+    def highest_scoring_home_team
+        @stat_tracker.team_name(highest_scoring_home_team_id)
+      end
+    
+    def lowest_scoring_home_team
+        @stat_tracker.team_name(lowest_scoring_home_team_id)
+      end
+    
 end

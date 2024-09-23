@@ -18,6 +18,7 @@ class Game
         @home_team_id = data["home_team_id"]
         @away_goals   = data["away_goals"]
         @home_goals   = data["home_goals"]
-        @venue        = data["venue"]        
+        @venue        = data["venue"]
+        @season       = data["season"]
     end
 end

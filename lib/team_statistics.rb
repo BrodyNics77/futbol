@@ -13,11 +13,10 @@ class TeamStatistics
       @stat_tracker = stat_tracker
       @team_info_hash = {}
   end
-
+  
   def team_name(team_id)
-      @teams[team_id]&.team_name
+    @teams.find { |team| team.team_id == team_id }.team_name
   end
-
 
   def count_of_teams
       @teams.size
@@ -86,17 +85,13 @@ class TeamStatistics
       lowest_win_percentage = head_to_head_results.values.min_by { |record| record[:win_percentage] }
       rival = head_to_head_results.key(lowest_win_percentage)
       rival
-  end
-
-  def team_name(team_id)
-      @teams.find { |team| team.team_id == team_id }.team_name
-  end       
+  end  
 
   def favorite_opponent(team_id)
-     head_to_head_results = head_to_head(team_id)
-     highest_win_percentage = head_to_head_results.values.max_by { |record| record[:highest_win_percentage]}
-     favorite = head_to_head_results.key(highest_win_percentage)
-     favorite
+     head_to_head_results = head_to_head(team_id)    
+     highest_win_percentage = head_to_head_results.values.max_by { |record| record[:win_percentage]}
+     favorite =  head_to_head_results.key(highest_win_percentage)
+     favorite     
   end 
 
   def worst_loss(team_id)
@@ -168,6 +163,7 @@ class TeamStatistics
   end
 
   def season_total_games(team_id)
+    require 'pry'; binding.pry
     total_games = 0
     @game_teams.each do |game|
       if team_id == game.team_id.to_s && game.result == 'TIE'
@@ -230,18 +226,18 @@ class TeamStatistics
   def average_win_percentage(team_id)
     total_games = 0
     wins = 0
-
+  
     @games.each do |game|
-      if game.away_team_id = team_id || game.home_team_id == team_id
+      if game.away_team_id == team_id || game.home_team_id == team_id
         total_games += 1
-        if (game.away_team_id == team_id && game.away_goals.to_i > game.home_goals.to_i) ||
-          (game.home_team_id == team_id && game.home_goals.to_i > game.away_goals.to_i)
+        if (game.away_team_id == team_id && game.away_goals.to_i > game.home_goals.to_i) || 
+           (game.home_team_id == team_id && game.home_goals.to_i > game.away_goals.to_i)
           wins += 1
         end
       end
     end
-
-    win_percentage = total_games > 0 ? (wins.to_f / total).round(2) : 0.0
+  
+    win_percentage = total_games > 0 ? (wins.to_f / total_games).round(2) : 0.0
     win_percentage
-  end
+  end  
 end

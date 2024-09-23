@@ -17,12 +17,12 @@ RSpec.describe SeasonStatistics do
   end
 
   describe '#coach stats' do
-    it 'knows the winningest coach' do
-      expect(@season_stats.winningest_coach).to eq('Claude Julien')
+    it 'knows the winningest coach' do     
+      expect(@season_stats.winningest_coach(20122013)).to eq('Claude Julien')
     end
 
-    it 'knows the worst coach' do
-      expect(@season_stats.worst_coach).to eq('John Tortorella')
+    it 'knows the worst coach' do     
+      expect(@season_stats.worst_coach(20122013)).to eq('John Tortorella')
     end
   end
 
@@ -38,11 +38,11 @@ RSpec.describe SeasonStatistics do
 
   describe '#tackle stats' do
     it 'knows the team with the most tackles' do
-      expect(@season_stats.most_tackles).to eq('Houston Dynamo')
+      expect(@season_stats.most_tackles("20122013")).to eq('Houston Dynamo')
     end
 
     it 'knows the team with the fewest tackles' do
-      expect(@season_stats.fewest_tackles).to eq("Portland Timbers")
+      expect(@season_stats.fewest_tackles("20122013")).to eq('Portland Timbers')
     end
   end
 end
