@@ -221,5 +221,25 @@ class TeamStatistics
         }
    
      team_info_hash
-  end                
+  end
+
+  def average_win_percentage(team_id)
+    total_games = 0
+    wins = 0
+  
+    @games.each do |game|
+      if game.away_team_id == team_id || game.home_team_id == team_id
+        total_games += 1
+        if (game.away_team_id == team_id && game.away_goals.to_i > game.home_goals.to_i) || 
+           (game.home_team_id == team_id && game.home_goals.to_i > game.away_goals.to_i)
+          wins += 1
+        end
+      end
+    end
+  
+    win_percentage = total_games > 0 ? (wins.to_f / total_games).round(2) : 0.0
+    team_name = @stat_tracker.team_name(team_id)
+    win_percentage
+    {team_name: team_name, win_percentage: win_percentage}
+  end  
 end
